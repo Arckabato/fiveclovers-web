@@ -69,7 +69,7 @@ a {
 header {
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: 100;
     background: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(31, 47, 54, 0.06);
@@ -81,6 +81,7 @@ header {
     align-items: center;
     justify-content: space-between;
     gap: 24px;
+    position: relative;
 }
 
 .brand {
@@ -94,7 +95,13 @@ header {
     width: auto;
 }
 
-nav {
+.nav-wrap {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-menu {
     display: flex;
     align-items: center;
     gap: 28px;
@@ -102,18 +109,33 @@ nav {
     justify-content: flex-end;
 }
 
-nav a {
+.nav-menu a {
     color: var(--fc-text-soft);
     font-size: 0.96rem;
     font-weight: 600;
 }
 
-nav a:hover {
+.nav-menu a:hover {
     color: var(--fc-primary);
 }
 
 .nav-cta {
-    margin-left: 10px;
+    margin-left: 6px;
+}
+
+.menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    border: 1px solid rgba(31, 47, 54, 0.12);
+    background: #ffffff;
+    color: var(--fc-text);
+    font-size: 1.4rem;
+    cursor: pointer;
+    box-shadow: var(--fc-shadow-sm);
 }
 
 /* =========================
@@ -442,13 +464,44 @@ footer {
     .header-inner {
         min-height: auto;
         padding: 16px 0;
-        flex-direction: column;
-        align-items: flex-start;
     }
 
-    nav {
-        gap: 16px;
-        justify-content: flex-start;
+    .menu-toggle {
+        display: inline-flex;
+    }
+
+    .nav-wrap {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        border: 1px solid rgba(31, 47, 54, 0.08);
+        border-radius: 20px;
+        box-shadow: var(--fc-shadow);
+        padding: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .nav-menu.open {
+        display: flex;
+    }
+
+    .nav-menu .nav-cta {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .nav-menu .nav-cta.btn {
+        width: 100%;
     }
 
     .hero-inner {
@@ -470,6 +523,10 @@ footer {
         width: min(var(--fc-maxw), calc(100% - 24px));
     }
 
+    .brand img {
+        height: 60px;
+    }
+
     .hero h1 {
         font-size: 2.35rem;
     }
@@ -487,11 +544,6 @@ footer {
 
     .btn {
         width: 100%;
-    }
-
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
     }
 
     .cards {
