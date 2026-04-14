@@ -89,7 +89,7 @@ header {
 }
 
 .brand img {
-    height: 44px;
+    height: 75px;
     width: auto;
 }
 
@@ -345,6 +345,15 @@ nav a:hover {
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+}
+
+.card-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 14px;
+    border-radius: 12px;
+    background: #ffffff;
+    padding: 6px;
 }
 
 /* =========================
