@@ -1,11 +1,726 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Five Clovers</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Five Clovers | Soluciones tecnológicas orgánicas</title>
+    <meta
+        name="description"
+        content="Five Clovers es una consultora tecnológica que diseña soluciones orgánicas y a medida en estrategia, software, infraestructura, datos y ciberseguridad."
+    />
+    <style>
+        :root {
+            --bg: #07111f;
+            --bg-soft: #0d1b2d;
+            --panel: rgba(255, 255, 255, 0.05);
+            --panel-strong: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.12);
+            --text: #f4f8fb;
+            --muted: #b6c3cf;
+            --accent: #66d19e;
+            --accent-2: #9ef0c2;
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+            --radius-xl: 28px;
+            --radius-lg: 20px;
+            --maxw: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(102, 209, 158, 0.18), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(85, 180, 255, 0.12), transparent 30%),
+                linear-gradient(180deg, #07111f 0%, #091625 45%, #07111f 100%);
+            color: var(--text);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(var(--maxw), calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(14px);
+            background: rgba(7, 17, 31, 0.72);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .header-inner {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-mark {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(102, 209, 158, 0.2), rgba(158, 240, 194, 0.08));
+            border: 1px solid rgba(158, 240, 194, 0.25);
+            display: grid;
+            place-items: center;
+            box-shadow: var(--shadow);
+            font-weight: 700;
+            color: var(--accent-2);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .brand-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .brand-subtitle {
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--accent-2);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 22px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-weight: 600;
+            transition: 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #89e5b5);
+            color: #082017;
+            box-shadow: 0 12px 30px rgba(102, 209, 158, 0.28);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.03);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.14);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .hero {
+            padding: 86px 0 54px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 34px;
+            align-items: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 18px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.26em;
+            color: var(--accent-2);
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(2.4rem, 6vw, 4.7rem);
+            line-height: 1.02;
+            letter-spacing: -0.03em;
+            max-width: 720px;
+        }
+
+        .hero p {
+            margin: 24px 0 0;
+            max-width: 700px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.9;
+        }
+
+        .hero-actions {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .hero-panel {
+            background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+            border: 1px solid rgba(158, 240, 194, 0.16);
+            border-radius: var(--radius-xl);
+            padding: 26px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-panel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .mini-card {
+            padding: 18px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.045);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .mini-card .mini-label {
+            font-size: 0.84rem;
+            color: var(--accent-2);
+            margin-bottom: 10px;
+        }
+
+        .mini-card .mini-title {
+            font-size: 1rem;
+            line-height: 1.5;
+            font-weight: 600;
+        }
+
+        .section {
+            padding: 36px 0 34px;
+        }
+
+        .section-title {
+            margin: 0 0 14px;
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .section-text {
+            margin: 0;
+            max-width: 900px;
+            color: var(--muted);
+            line-height: 1.9;
+            font-size: 1.02rem;
+        }
+
+        .highlight-box {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 34px;
+            box-shadow: var(--shadow);
+        }
+
+        .pillars-grid {
+            margin-top: 28px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .card h3 {
+            margin: 0 0 14px;
+            font-size: 1.18rem;
+            line-height: 1.4;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 0.98rem;
+        }
+
+        .cases-grid {
+            margin-top: 28px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .case-tag {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: var(--accent-2);
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-weight: 700;
+        }
+
+        .fit-box {
+            background:
+                linear-gradient(135deg, rgba(102, 209, 158, 0.14), rgba(255,255,255,0.03));
+            border: 1px solid rgba(102, 209, 158, 0.18);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-grid {
+            margin-top: 28px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .contact-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-card small {
+            display: block;
+            color: var(--accent-2);
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .contact-card h3 {
+            margin: 0 0 10px;
+            font-size: 1.3rem;
+        }
+
+        .contact-card p {
+            margin: 0 0 16px;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .contact-link {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .footer {
+            padding: 30px 0 44px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .footer-inner {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: white;
+            border-radius: 12px;
+            min-width: 46px;
+            min-height: 46px;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 980px) {
+            .hero-grid,
+            .pillars-grid,
+            .cases-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-panel-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 78px;
+                left: 16px;
+                right: 16px;
+                background: #0b1627;
+                border: 1px solid rgba(255,255,255,0.08);
+                border-radius: 18px;
+                padding: 18px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav .btn-primary {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding-top: 62px;
+            }
+
+            .hero p,
+            .section-text,
+            .card p,
+            .contact-card p {
+                line-height: 1.75;
+            }
+
+            .hero-panel-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight-box,
+            .fit-box,
+            .card,
+            .contact-card,
+            .hero-panel {
+                padding: 22px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
-<body style="background:#0f172a; color:white; font-family:sans-serif; text-align:center; padding:100px;">
-    <h1>Five Clovers</h1>
-    <p>Web en construcción</p>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#inicio" class="brand">
+                <div class="brand-mark">5C</div>
+                <div class="brand-text">
+                    <div class="brand-title">Five Clovers</div>
+                    <div class="brand-subtitle">IT Solutions</div>
+                </div>
+            </a>
+
+            <nav class="nav">
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir menú">☰</button>
+
+                <div class="nav-links" id="navLinks">
+                    <a href="#propuesta">Propuesta</a>
+                    <a href="#pilares">Pilares</a>
+                    <a href="#experiencia">Experiencia</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+
+                <a class="btn btn-primary" href="#contacto">Conversemos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="inicio">
+        <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <span class="eyebrow">Soluciones orgánicas para negocios reales</span>
+                    <h1>Tecnología que se adapta a la realidad de tu negocio.</h1>
+                    <p>
+                        En Five Clovers ayudamos a empresas a ordenar, digitalizar y escalar su operación con soluciones tecnológicas a medida.
+                        Combinamos estrategia, software, infraestructura, datos y ciberseguridad para construir herramientas útiles, sostenibles y alineadas con tus objetivos.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="https://wa.me/987959843" target="_blank" rel="noopener noreferrer">
+                            Escribir por WhatsApp
+                        </a>
+                        <a class="btn btn-secondary" href="#experiencia">
+                            Ver experiencia
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-panel">
+                    <div class="hero-panel-grid">
+                        <div class="mini-card">
+                            <div class="mini-label">Consultoría</div>
+                            <div class="mini-title">Procesos, diagnóstico y estrategia tecnológica</div>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-label">Software</div>
+                            <div class="mini-title">Sistemas y aplicaciones diseñadas a medida</div>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-label">Datos</div>
+                            <div class="mini-title">BI, análisis y reglas de negocio accionables</div>
+                        </div>
+                        <div class="mini-card">
+                            <div class="mini-label">Infraestructura</div>
+                            <div class="mini-title">Arquitecturas seguras, sólidas y escalables</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="propuesta">
+            <div class="container">
+                <div class="highlight-box">
+                    <h2 class="section-title">No fabricamos soluciones en serie.</h2>
+                    <p class="section-text">
+                        Five Clovers nace con una idea clara: la tecnología debe crecer con el negocio, no forzarlo.
+                        Por eso trabajamos con un enfoque orgánico y moldeable, entendiendo la operación real de cada empresa para diseñar soluciones que sí encajen, sí aporten valor y sí puedan evolucionar con el tiempo.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="pilares">
+            <div class="container">
+                <h2 class="section-title">Nuestros 5 pilares</h2>
+                <p class="section-text">
+                    Basamos nuestros proyectos en cinco frentes que integran visión estratégica, ejecución tecnológica y sostenibilidad operativa. Esto coincide con la esencia de tu manifiesto de marca y con los compromisos centrales de Five Clovers. :contentReference[oaicite:0]{index=0}
+                </p>
+
+                <div class="pillars-grid">
+                    <article class="card">
+                        <h3>Desarrollo e Innovación</h3>
+                        <p>
+                            Construimos soluciones tecnológicas a medida que combinan creatividad, calidad y sostenibilidad para impulsar el crecimiento de tu negocio.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Estrategia Tecnológica</h3>
+                        <p>
+                            Alineamos la tecnología con tus objetivos de negocio, diseñando una hoja de ruta clara que maximiza el retorno de tu inversión.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Infraestructura Conectada</h3>
+                        <p>
+                            Diseñamos arquitecturas sólidas, escalables y seguras que garantizan la continuidad operativa de tu negocio.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Datos e Inteligencia</h3>
+                        <p>
+                            Convertimos tus datos en activos estratégicos que potencian la toma de decisiones y descubren nuevas oportunidades de negocio.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Protección y Ciberseguridad</h3>
+                        <p>
+                            Blindamos tu operación digital con estrategias de prevención, detección y respuesta ante amenazas que protegen lo más valioso de tu empresa.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <h3>Nuestro enfoque</h3>
+                        <p>
+                            Nos moldeamos al negocio. No creemos en fórmulas rígidas ni soluciones estándar: diseñamos tecnología alineada a la forma real en la que opera cada cliente.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="experiencia">
+            <div class="container">
+                <h2 class="section-title">Experiencia aplicada a casos reales</h2>
+                <p class="section-text">
+                    Estos proyectos muestran el tipo de problemas que Five Clovers puede resolver: orden operativo, digitalización, integración, analítica y control de negocio.
+                </p>
+
+                <div class="cases-grid">
+                    <article class="card">
+                        <span class="case-tag">ERP + procesos</span>
+                        <h3>Grupo Carmelino</h3>
+                        <p>
+                            Implementación de un ERP para registrar propuestas, gestionar actividades de proyectos, administrar facturas y mantener maestros de clientes, proveedores y empleados.
+                            Además, se desarrolló consultoría de procesos, identificación de modelos de negocio, optimización operativa y definición de funciones por rol.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <span class="case-tag">Integración e-commerce</span>
+                        <h3>Ligo Pay</h3>
+                        <p>
+                            Desarrollo de una solución para Shopify que permitió que su botón de venta pudiera ser utilizado de forma accesible dentro de la plataforma por sus clientes.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <span class="case-tag">Datos + reglas de negocio</span>
+                        <h3>Dos Lunares</h3>
+                        <p>
+                            Análisis de ventas y stock para construir reglas de negocio y reportes orientados a optimizar el restock de la distribuidora y mejorar la toma de decisiones.
+                        </p>
+                    </article>
+
+                    <article class="card">
+                        <span class="case-tag">App móvil + BI</span>
+                        <h3>QM Pharma</h3>
+                        <p>
+                            Desarrollo de una aplicación móvil para registro de pedidos y construcción de vistas BI para analizar el rendimiento de rutas comerciales de vendedores.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="fit-box">
+                    <h2 class="section-title">¿Con qué tipo de empresa encajamos mejor?</h2>
+                    <p class="section-text">
+                        Five Clovers aporta más valor en empresas medianas o en crecimiento que necesitan ordenar procesos, digitalizar operaciones, tener mayor control interno o convertir sus datos en decisiones accionables.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contacto">
+            <div class="container">
+                <h2 class="section-title">Hablemos</h2>
+                <p class="section-text">
+                    Si quieres explorar una mejora puntual o una transformación más amplia, puedes contactarnos por el canal que te resulte más cómodo.
+                </p>
+
+                <div class="contact-grid">
+                    <article class="contact-card">
+                        <small>WhatsApp</small>
+                        <h3>Conversemos rápido</h3>
+                        <p>
+                            Ideal para una primera conversación sobre tu necesidad o para validar si hay encaje.
+                        </p>
+                        <a class="contact-link" href="https://wa.me/TU_NUMERO_WHATSAPP" target="_blank" rel="noopener noreferrer">
+                            Ir a WhatsApp
+                        </a>
+                    </article>
+
+                    <article class="contact-card">
+                        <small>Correo</small>
+                        <h3>Escríbenos</h3>
+                        <p>
+                            Cuéntanos brevemente tu reto y te responderemos con el siguiente paso.
+                        </p>
+                        <a class="contact-link" href="mailto:diego.yanez@fiveclovers.com">
+                            TU_CORREO@fiveclovers.com
+                        </a>
+                    </article>
+
+                    <article class="contact-card">
+                        <small>Reunión</small>
+                        <h3>Agenda una llamada</h3>
+                        <p>
+                            Si prefieres una conversación más estructurada, reserva un espacio en tu calendario.
+                        </p>
+                        <a class="contact-link" href="https://calendly.com/diego-yanez-fiveclovers/new-meeting" target="_blank" rel="noopener noreferrer">
+                            Agendar reunión
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div>
+                <strong style="color: #ffffff;">Five Clovers</strong><br />
+                Consultora tecnológica con enfoque en transformación digital, procesos, infraestructura y soluciones estratégicas, en línea con tu manifiesto de marca. :contentReference[oaicite:1]{index=1}
+            </div>
+            <div>© 2026 Five Clovers. Todos los derechos reservados.</div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileToggle = document.getElementById("mobileToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        mobileToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("show");
+        });
+
+        navLinks.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("show");
+            });
+        });
+    </script>
 </body>
 </html>
