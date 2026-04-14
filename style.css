@@ -1,0 +1,148 @@
+:root {
+    --fc-primary: #2f9e44;
+    --fc-primary-dark: #1f5e3b;
+    --fc-accent: #1f4e68;
+
+    --fc-bg: #0b1220;
+    --fc-surface: #121a2b;
+    --fc-surface-soft: #0f172a;
+
+    --fc-text: #ffffff;
+    --fc-text-soft: #b8c5d0;
+
+    --fc-border: rgba(255,255,255,0.08);
+
+    --fc-radius: 14px;
+    --fc-shadow: 0 10px 30px rgba(0,0,0,0.4);
+
+    --fc-transition: all 0.2s ease;
+}
+
+/* BASE */
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: var(--fc-bg);
+    color: var(--fc-text);
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--fc-border);
+}
+
+header img {
+    height: 40px;
+}
+
+nav a {
+    margin-left: 20px;
+    color: var(--fc-text-soft);
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: var(--fc-text);
+}
+
+/* BUTTONS */
+.btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: var(--fc-transition);
+}
+
+.btn-primary {
+    background: var(--fc-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--fc-primary-dark);
+}
+
+.btn-outline {
+    border: 1px solid var(--fc-border);
+    color: white;
+}
+
+.btn-outline:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+    padding: 80px 0;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero h1 {
+    font-size: 46px;
+    line-height: 1.2;
+}
+
+.hero p {
+    color: var(--fc-text-soft);
+    line-height: 1.7;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    background: var(--fc-surface);
+    padding: 20px;
+    border-radius: var(--fc-radius);
+    border: 1px solid var(--fc-border);
+    box-shadow: var(--fc-shadow);
+}
+
+/* SECTIONS */
+.section {
+    padding: 60px 0;
+}
+
+.section h2 {
+    margin-bottom: 10px;
+}
+
+.section p {
+    color: var(--fc-text-soft);
+}
+
+/* CONTACT */
+.contact {
+    text-align: center;
+}
+
+/* FOOTER */
+footer {
+    border-top: 1px solid var(--fc-border);
+    text-align: center;
+    padding: 30px;
+    color: var(--fc-text-soft);
+}
